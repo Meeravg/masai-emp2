@@ -11,10 +11,10 @@ let Mob = document.getElementById('mbl')
 let tbody = document.querySelector('tbody');
 
 
-let MainData = JSON.parse(localStorage.getItem('MainData')) ;
+let MainData = JSON.parse(localStorage.getItem('MainData')) || [] ;
 
 
-function updateLocalStorage() {
+function updateLocalStorage(MainData) {
     localStorage.setItem('MainData', JSON.stringify(MainData));
 }
 
@@ -38,7 +38,7 @@ MyForm.addEventListener('submit',function(e)
 
     MainData.push(Data)
 
-    updateLocalStorage(); //update local storage
+    updateLocalStorage(MainData); //update local storage
 
     console.log(MainData)
 
@@ -98,7 +98,7 @@ MyForm.addEventListener('submit',function(e)
 
 function deleteData(i,row){
     MainData.splice(i,1)
-    updateLocalStorage(); // local storage update
+    updateLocalStorage(MainData); // local storage update
     row.innerHTML=""
 }
 
